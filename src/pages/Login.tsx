@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
-import { loginUser } from '../services/authService'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { AuthService } from '../services/authService'
 
 function Login() {
 
@@ -15,7 +15,7 @@ function Login() {
         e.preventDefault()
         // mensaje por post al api del backend
         try {
-            await loginUser(form.email, form.password)
+            await AuthService.loginUser(form.email, form.password)
             console.log('login successfull')
             setMessage('login successfull')
             // Redirigir a otra pagina (ofertas)

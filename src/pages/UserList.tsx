@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getUsers } from '../services/userService'
+import { UserService } from '../services/userService'
 
 interface User {
     id: number
@@ -9,7 +9,7 @@ interface User {
     course: string
     email: string
     active: boolean
-    accepNotifications: boolean
+    acceptNotifications: boolean
 }
 function UserList() {
     const [users, setUsers] = useState<User[]>([])
@@ -19,7 +19,7 @@ function UserList() {
     useEffect(() => {
         async function call() {
             try {
-                const userList = await getUsers()
+                const userList = await UserService.getAll()
                 setUsers(userList)
             } catch (error) {
                 const msg = error instanceof Error ? error.message : 'Error desconocido'

@@ -9,7 +9,7 @@ interface User {
     course: string
     email: string
     active: boolean
-    acceptNotifications: boolean
+    accepNotifications: boolean
 }
 function UserList() {
     const [users, setUsers] = useState<User[]>([])

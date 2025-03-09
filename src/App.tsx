@@ -13,11 +13,13 @@ import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
 import CategoryManager from "./pages/CategoryManager";
 
+
 function App() {
+
   return (
     <>
       <BrowserRouter>
-        <div className="flex flex-col">
+        <div className="flex flex-col  h-screen ">
           <Navbar />
           <Toaster position="top-center" reverseOrder={false} />
           <div className="flex grow justify-center items-center">
@@ -36,6 +38,7 @@ function App() {
           </div>
           <Footer />
         </div>
+
       </BrowserRouter>
     </>
   );

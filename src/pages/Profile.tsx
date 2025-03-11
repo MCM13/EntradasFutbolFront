@@ -17,45 +17,67 @@ function Profile() {
     }, []);
 
     return (
-        <div className="max-w-md mx-auto bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Perfil de Usuario
+        <div className="max-w-2xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8 mt-8">
+            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
+                Mi Perfil
             </h2>
-            {error && <p className="text-red-500">{error}</p>}
+
+            {error && <p className="text-red-500 text-center">{error}</p>}
             {loading ? (
-                <p>Cargando...</p>
+                <p className="text-center">Cargando perfil...</p>
             ) : (
                 user && (
-                    <div className="space-y-4">
-                        <div>
-                            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Nombre</p>
-                            <p className="text-lg font-semibold text-gray-900 dark:text-white">{user.name}</p>
+                    <div className="space-y-6">
+                        {/* Nombre y Apellidos */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Nombre</p>
+                                <p className="text-lg font-semibold text-gray-900 dark:text-white">{user.name}</p>
+                            </div>
+                            <div>
+                                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Apellidos</p>
+                                <p className="text-lg font-semibold text-gray-900 dark:text-white">{user.surname}</p>
+                            </div>
                         </div>
-                        <div>
-                            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Apellidos</p>
-                            <p className="text-lg font-semibold text-gray-900 dark:text-white">{user.surname}</p>
-                        </div>
+
+                        {/* Correo Electrónico */}
                         <div>
                             <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Correo Electrónico</p>
                             <p className="text-lg font-semibold text-gray-900 dark:text-white">{user.email}</p>
                         </div>
+
+                        {/* Rol */}
                         <div>
                             <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Rol</p>
-                            <p className="text-lg font-semibold text-gray-900 dark:text-white">{user.role}</p>
+                            <p className="text-lg font-semibold text-gray-900 dark:text-white capitalize">{user.role}</p>
                         </div>
+
+                        {/* Curso */}
                         <div>
                             <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Curso</p>
-                            <p className="text-lg font-semibold text-gray-900 dark:text-white">{user.course}</p>
+                            <p className="text-lg font-semibold text-gray-900 dark:text-white">{user.course || "No especificado"}</p>
                         </div>
-                        <div>
-                            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Activado</p>
-                            <p className="text-lg font-semibold text-gray-900 dark:text-white">{user.active ? 'SI' : 'NO'}</p>
+
+                        {/* Activado */}
+                        <div className="flex items-center gap-2">
+                            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Cuenta activa:</p>
+                            <span
+                                className={`px-3 py-1 rounded-full text-white text-sm ${user.active ? "bg-green-600" : "bg-red-600"
+                                    }`}
+                            >
+                                {user.active ? "Sí" : "No"}
+                            </span>
                         </div>
-                        <div>
-                            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Recibe notificaciones por email</p>
-                            <p className="text-lg font-semibold text-gray-900 dark:text-white">
+
+                        {/* Notificaciones */}
+                        <div className="flex items-center gap-2">
+                            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Notificaciones por email:</p>
+                            <span
+                                className={`px-3 py-1 rounded-full text-white text-sm ${user.acceptNotifications ? "bg-green-600" : "bg-gray-500"
+                                    }`}
+                            >
                                 {user.acceptNotifications ? "Sí" : "No"}
-                            </p>
+                            </span>
                         </div>
                     </div>
                 )

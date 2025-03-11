@@ -54,7 +54,7 @@ function Profile() {
                         <div>
                             <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Recibe notificaciones por email</p>
                             <p className="text-lg font-semibold text-gray-900 dark:text-white">
-                                {user.accepNotifications ? "Sí" : "No"}
+                                {user.acceptNotifications ? "Sí" : "No"}
                             </p>
                         </div>
                     </div>

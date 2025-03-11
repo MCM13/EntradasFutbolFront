@@ -6,6 +6,6 @@ export default interface User {
     password: string
     course?: string
     active: boolean
-    accepNotifications: boolean
+    acceptNotifications: boolean
     role: string
 }
